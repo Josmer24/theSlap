@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chismes</title>
+</head>
+<body>
+    <h2>Chismes disponibles</h2>
+
+    <ul>
+    {% for chisme in chismes %}
+        <li>
+            <strong>Autor:</strong> {{ chisme[1] }} <br>
+            <strong>Chisme:</strong> {{ chisme[2] }} <br>
+            <strong>Votos:</strong> {{ chisme[3] }} <br>
+            <form action="/votar/{{ chisme[0] }}" method="POST">
+                <button type="submit">Votar</button>
+            </form>
+            <br>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <!-- Botón para ver los chismes -->
+    <form action="/chismes/{{ usuario_actual }}" method="GET">
+        <button type="submit">Actualizar Chismes</button>
+    </form>
+
+    <a href="/agregar_chisme">Agregar nuevo chisme</a>
+</body>
+</html>
